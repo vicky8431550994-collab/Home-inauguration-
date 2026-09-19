@@ -11,7 +11,6 @@
     :root {
       --gold-primary: #d4af37;
       --gold-light: #fef08a;
-      --gold-glow: rgba(212, 175, 55, 0.45);
       --card-glass: rgba(12, 12, 16, 0.82);
     }
 
@@ -40,7 +39,6 @@
       transform: scale(1.02);
     }
 
-    /* Dual Color Luxury Ambient Overlay */
     .hero-bg-overlay {
       position: fixed;
       inset: 0;
@@ -62,7 +60,6 @@
       z-index: 1;
     }
 
-    /* Header */
     header {
       position: relative;
       z-index: 10;
@@ -98,7 +95,6 @@
       font-weight: 600;
     }
 
-    /* Container */
     .container {
       position: relative;
       z-index: 2;
@@ -126,7 +122,6 @@
       font-weight: 700;
       letter-spacing: 1.2px;
       line-height: 1.6;
-      padding-top: 4px;
       text-shadow: 0 2px 10px rgba(0,0,0,0.9);
     }
 
@@ -151,7 +146,6 @@
     }
 
     .hero-desc {
-      font-family: 'Noto Serif Kannada', serif;
       font-size: 15.5px;
       line-height: 1.85;
       color: #e4e4e7;
@@ -159,7 +153,6 @@
       text-shadow: 0 2px 8px rgba(0,0,0,0.9);
     }
 
-    /* Specs Matrix */
     .spec-matrix {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -175,13 +168,7 @@
       border-radius: 16px;
       padding: 16px 18px;
       position: relative;
-      transition: all 0.3s ease;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    }
-
-    .matrix-item:hover {
-      border-color: rgba(212, 175, 55, 0.5);
-      transform: translateY(-3px);
     }
 
     .matrix-item::before {
@@ -197,13 +184,12 @@
 
     .matrix-title {
       font-size: 12px;
-      font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       text-transform: uppercase;
       letter-spacing: 1.2px;
       color: #a1a1aa;
       margin-bottom: 6px;
       font-weight: 600;
-      line-height: 1.4;
     }
 
     .matrix-value {
@@ -213,7 +199,6 @@
       line-height: 1.6;
     }
 
-    /* CTA Row */
     .cta-row {
       display: flex;
       align-items: center;
@@ -223,7 +208,6 @@
     }
 
     .btn-maps-pulse {
-      position: relative;
       display: inline-flex;
       align-items: center;
       gap: 12px;
@@ -235,12 +219,11 @@
       font-weight: 800;
       font-size: 15.5px;
       box-shadow: 0 12px 30px rgba(212, 175, 55, 0.45);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
     .btn-maps-pulse:hover {
-      transform: translateY(-2px) scale(1.02);
+      transform: translateY(-2px);
       box-shadow: 0 18px 40px rgba(212, 175, 55, 0.65);
     }
 
@@ -248,34 +231,25 @@
       padding: 16px 26px;
       border-radius: 50px;
       background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fafafa;
       text-decoration: none;
       font-size: 14.5px;
       font-weight: 600;
-      transition: background 0.2s;
     }
 
-    .btn-call:hover {
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    /* Right Architectural Showcase Card */
+    /* Right Showcase */
     .hero-card-col {
       position: relative;
     }
 
     .estate-card {
-      position: relative;
       background: var(--card-glass);
       backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
       border-radius: 26px;
       border: 1px solid rgba(255, 255, 255, 0.15);
       padding: 16px;
       box-shadow: 0 35px 70px rgba(0, 0, 0, 0.85);
-      overflow: hidden;
     }
 
     .photo-wrap {
@@ -292,10 +266,9 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.6s ease;
     }
 
-    /* Animated Movie Play Button */
+    /* Animated Video Play Button (Click Opens Video, NOT Google Maps) */
     .movie-play-btn {
       position: absolute;
       top: 50%;
@@ -303,7 +276,7 @@
       transform: translate(-50%, -50%);
       width: 82px;
       height: 82px;
-      background: rgba(15, 12, 10, 0.8);
+      background: rgba(15, 12, 10, 0.82);
       backdrop-filter: blur(12px);
       border-radius: 50%;
       border: 2px solid #ffd700;
@@ -337,7 +310,7 @@
 
     .movie-play-btn:hover {
       transform: translate(-50%, -50%) scale(1.1);
-      background: rgba(212, 175, 55, 0.95);
+      background: #d4af37;
     }
 
     .play-triangle {
@@ -380,12 +353,6 @@
       background: #ef4444;
       border-radius: 50%;
       box-shadow: 0 0 8px #ef4444;
-      animation: blink 1.2s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
     }
 
     .floating-card-tag {
@@ -396,7 +363,6 @@
       padding: 14px 18px;
       background: rgba(9, 9, 12, 0.92);
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
       border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.15);
       display: flex;
@@ -426,15 +392,12 @@
       box-shadow: 0 0 10px #10b981;
     }
 
-    /* ===================================================
-       ALL THREE FEATURES: LUXURY HD TOUR MODAL SYSTEM 
-       =================================================== */
+    /* Video Modal */
     .tour-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(4, 4, 6, 0.88);
+      background: rgba(4, 4, 6, 0.9);
       backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
       z-index: 100;
       display: none;
       align-items: center;
@@ -451,19 +414,13 @@
       max-width: 850px;
       background: #0e0e12;
       border: 1.5px solid rgba(212, 175, 55, 0.4);
-      border-radius: 26px;
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(212, 175, 55, 0.2);
-      animation: modalFadeUp 0.35s ease;
-    }
-
-    @keyframes modalFadeUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
     }
 
     .modal-header {
-      padding: 20px 24px;
+      padding: 18px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -475,9 +432,6 @@
       font-size: 18px;
       color: #ffd700;
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
 
     .close-btn {
@@ -489,163 +443,22 @@
       height: 36px;
       border-radius: 50%;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
     }
 
     .close-btn:hover {
-      background: rgba(239, 68, 68, 0.8);
-      border-color: #ef4444;
+      background: #ef4444;
     }
 
-    /* Modal Tabs (Option A, B, C) */
-    .modal-tabs {
-      display: flex;
-      background: rgba(10, 10, 14, 0.8);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      overflow-x: auto;
-    }
-
-    .tab-btn {
-      flex: 1;
-      padding: 16px 14px;
-      background: none;
-      border: none;
-      color: #a1a1aa;
-      font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
-      font-size: 13.5px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border-bottom: 2px solid transparent;
-      transition: all 0.25s ease;
-      white-space: nowrap;
-    }
-
-    .tab-btn.active {
-      color: #ffd700;
-      border-bottom-color: #ffd700;
-      background: rgba(212, 175, 55, 0.06);
-    }
-
-    .tab-content {
-      display: none;
-      padding: 24px;
-      min-height: 380px;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    /* Tab 1: Video Tour View */
     .video-view-wrap {
-      position: relative;
       width: 100%;
-      height: 340px;
-      border-radius: 18px;
-      overflow: hidden;
+      height: 440px;
       background: #000;
-      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .video-view-wrap video, .video-view-wrap iframe {
+    .video-view-wrap video {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      border: none;
-    }
-
-    /* Tab 2: HD Photo Walkthrough Gallery */
-    .gallery-view {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 14px;
-      height: 340px;
-    }
-
-    .main-gallery-photo {
-      border-radius: 16px;
-      overflow: hidden;
-      height: 100%;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .main-gallery-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .gallery-side-col {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      height: 100%;
-    }
-
-    .side-photo {
-      flex: 1;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      background: #18181b;
-      cursor: pointer;
-    }
-
-    .side-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-
-    .side-photo:hover img {
-      transform: scale(1.08);
-    }
-
-    .side-badge {
-      position: absolute;
-      bottom: 8px;
-      left: 8px;
-      padding: 4px 8px;
-      background: rgba(0,0,0,0.7);
-      border-radius: 6px;
-      font-size: 10.5px;
-      color: #fff;
-    }
-
-    /* Tab 3: Interactive Route & Live Navigation */
-    .maps-view-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      height: 340px;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(12, 12, 16, 0.95) 75%);
-      border-radius: 18px;
-      border: 1px dashed rgba(212, 175, 55, 0.4);
-      padding: 20px;
-    }
-
-    .map-icon-large {
-      font-size: 54px;
-      filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
-    }
-
-    .map-prompt-text {
-      font-size: 16px;
-      color: #f4f4f5;
-      line-height: 1.6;
-      max-width: 480px;
+      object-fit: contain;
     }
 
     @media (max-width: 850px) {
@@ -656,16 +469,11 @@
       .photo-wrap {
         height: 310px;
       }
+      .video-view-wrap {
+        height: 280px;
+      }
       .spec-matrix {
         grid-template-columns: 1fr;
-      }
-      .gallery-view {
-        grid-template-columns: 1fr;
-        height: auto;
-      }
-      .gallery-side-col {
-        flex-direction: row;
-        height: 110px;
       }
     }
   </style>
@@ -738,7 +546,7 @@
             <span>HD TOUR</span>
           </div>
 
-          <button class="movie-play-btn" onclick="openTourModal()" title="HD Tour ವೀಕ್ಷಿಸಿ">
+          <button type="button" class="movie-play-btn" onclick="openTourModal()" title="ವಿಡಿಯೋ ವೀಕ್ಷಿಸಿ">
             <div class="play-triangle"></div>
           </button>
 
@@ -762,37 +570,55 @@
   </main>
 
   <div class="tour-modal-backdrop" id="tourBackdrop" onclick="handleBackdropClick(event)">
-    <div class="tour-modal" id="tourModal">
-      
+    <div class="tour-modal">
       <div class="modal-header">
-        <div class="modal-title">
-          <span>✨</span>
-          <span>ಅನು ಶಿವ ನಿಲಯ | HD Tour ಅನುಭವ</span>
-        </div>
+        <div class="modal-title">✨ ಅನು ಶಿವ ನಿಲಯ | HD ವಿಡಿಯೋ ಟೂರ್</div>
         <button class="close-btn" onclick="closeTourModal()">✕</button>
       </div>
 
-      <div class="modal-tabs">
-        <button class="tab-btn active" onclick="switchTab(0)">
-          🎬 1. ಸಿನಿಮಾಟಿಕ್ ವಿಡಿಯೋ ಟೂರ್
-        </button>
-        <button class="tab-btn" onclick="switchTab(1)">
-          🖼️ 2. HD ಫೋಟೋ ವಾಕ್‌ಥ್ರೂ
-        </button>
-        <button class="tab-btn" onclick="switchTab(2)">
-          📍 3. ಲೈವ್ ಗೂಗಲ್ ಮ್ಯಾಪ್ ರೂಟ್
-        </button>
+      <div class="video-view-wrap">
+        <video id="houseTourVideo" controls playsinline poster="house.jpg">
+          <source src="VID_20260918_231046_376.mp4" type="video/mp4">
+          <source src="tour.mp4" type="video/mp4">
+          ನಿಮ್ಮ ಬ್ರೌಸರ್ ವಿಡಿಯೋ ಬೆಂಬಲಿಸುವುದಿಲ್ಲ.
+        </video>
       </div>
+    </div>
+  </div>
 
-      <div class="tab-content active" id="tab-0">
-        <div class="video-view-wrap">
-          <video controls autoplay muted loop playsinline poster="house.jpg">
-            <source src="tour.mp4" type="video/mp4">
-            ನಿಮ್ಮ ಬ್ರೌಸರ್ ವಿಡಿಯೋ ಬೆಂಬಲಿಸುವುದಿಲ್ಲ.
-          </video>
-        </div>
-      </div>
+  <script>
+    function openTourModal() {
+      const modal = document.getElementById('tourBackdrop');
+      const video = document.getElementById('houseTourVideo');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      if (video) {
+        video.currentTime = 0;
+        video.play();
+      }
+    }
 
-      <div class="tab-content" id="tab-1">
-        <div class="gallery-view">
-    
+    function closeTourModal() {
+      const modal = document.getElementById('tourBackdrop');
+      const video = document.getElementById('houseTourVideo');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      if (video) {
+        video.pause();
+      }
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target.id === 'tourBackdrop') {
+        closeTourModal();
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeTourModal();
+    });
+  </script>
+
+</body>
+  </html>
+
