@@ -3,69 +3,222 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ಅನು ಶಿವ ನಿಲಯ - ಗೃಹಪ್ರವೇಶ</title>
+  <title>ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವ ಆಮಂತ್ರಣ ಪತ್ರಿಕೆ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Noto+Serif+Kannada:wght@500;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    * {
+      box-sizing: border-box;
       margin: 0;
-      padding: 20px;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Serif Kannada', serif;
+      background: radial-gradient(circle at 50% 20%, #2b0f19 0%, #15050b 50%, #080104 100%);
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      padding: 24px 12px;
+      color: #fff;
     }
-    .card {
-      background: #ffffff;
-      padding: 25px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      text-align: center;
-      max-width: 400px;
+
+    /* 3D Premium Card */
+    .card-wrapper {
+      perspective: 1200px;
       width: 100%;
-      border: 2px solid #e0a96d;
+      max-width: 440px;
     }
-    h2 { color: #b33939; margin-top: 0; }
-    h1 { color: #2c3e50; font-size: 24px; margin: 10px 0; }
-    .details {
-      background: #fdfaf6;
-      padding: 15px;
-      border-radius: 10px;
-      text-align: left;
-      margin: 15px 0;
-      font-size: 15px;
+
+    .card {
+      background: linear-gradient(165deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(255, 215, 0, 0.35);
+      border-radius: 28px;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(212, 175, 55, 0.2),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    /* Royal Golden Border Glow */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 30px;
+      padding: 2px;
+      background: linear-gradient(135deg, #ffd700, #ff8c00, #d4af37, #996515);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .mantra {
+      font-size: 19px;
+      font-weight: 700;
+      background: linear-gradient(180deg, #ffe066 0%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      font-size: 14.5px;
       line-height: 1.6;
+      color: #e2d9d0;
+      margin-bottom: 22px;
+      font-weight: 500;
     }
-    .btn {
+
+    /* 3D Photo Container */
+    .photo-frame {
+      width: 100%;
+      height: 250px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      border: 2px solid rgba(255, 215, 0, 0.4);
+      box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(212, 175, 55, 0.25);
+      transform: translateZ(20px);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      background-color: #27ae60;
-      color: white;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-frame:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Info 3D Tiles */
+    .info-tile {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      text-align: left;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .info-icon {
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    .info-content {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #f3ede6;
+    }
+
+    .info-content strong {
+      color: #ffd700;
+      display: inline-block;
+      min-width: 65px;
+    }
+
+    /* 3D Button */
+    .map-button {
+      display: inline-block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: 'Noto Serif Kannada', serif;
+      color: #1a0808;
       text-decoration: none;
-      padding: 14px;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 8px;
-      margin-top: 20px;
-      box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+      background: linear-gradient(135deg, #ffe066 0%, #e6a817 50%, #c48805 100%);
+      border-radius: 50px;
+      box-shadow: 
+        0 10px 25px rgba(230, 168, 23, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.6);
+      transform: translateZ(30px);
+      transition: all 0.2s ease;
+    }
+
+    .map-button:active {
+      transform: scale(0.98);
+      box-shadow: 0 5px 15px rgba(230, 168, 23, 0.3);
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h2>✨ || ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ || ✨</h2>
-    <h1>ಅನು ಶಿವ ನಿಲಯ</h1>
-    <p style="color: #555;">ನೂತನ ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವಕ್ಕೆ ತಮಗೆಲ್ಲರಿಗೂ ಪ್ರೀತಿಯ ಸುಸ್ವಾಗತ</p>
-    
-    <div class="details">
-      📅 <b>ದಿನಾಂಕ:</b> 08-11-2026 ರಿಂದ 12-11-2026<br>
-      ⏰ <b>ಸಮಯ:</b> ಮಧ್ಯಾಹ್ನ 12:00 ಗಂಟೆಗೆ<br>
-      🏡 <b>ವಿಳಾಸ:</b> ರಾಮಯ್ಯ ಬಡಾವಣೆ, ಶಂಕರ ನಗರ, ತಿಪಟೂರು<br>
-      📞 <b>ಸಂಪರ್ಕ:</b> 9964217340, 9535090924, 8431550994
-    </div>
 
-    <a href="https://maps.app.goo.gl/GNvneLcB43K88XCX6" class="btn">
-      📍 ಮನೆಗೆ ಹೋಗುವ ದಾರಿ (Google Maps)
-    </a>
+  <div class="card-wrapper">
+    <div class="card">
+      <div class="mantra">✨ || ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ || ✨</div>
+      <h1 class="title">ಅನು ಶಿವ ನಿಲಯ</h1>
+      <p class="subtitle">ನೂತನ ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವಕ್ಕೆ ತಮಗೂ ಹಾಗೂ ತಮ್ಮ ಕುಟುಂಬದವರಿಗೂ ಆದರದ ಹಾರ್ದಿಕ ಸುಸ್ವಾಗತ</p>
+
+      <!-- ಮನೆ ಫೋಟೋ -->
+      <div class="photo-frame">
+        <img src="house.jpg" alt="ಅನು ಶಿವ ನಿಲಯ">
+      </div>
+
+      <!-- ವಿವರಗಳು -->
+      <div class="info-tile">
+        <span class="info-icon">📅</span>
+        <div class="info-content">
+          <strong>ದಿನಾಂಕ:</strong> 28-11-2026 ರಿಂದ 29-11-2026
+        </div>
+      </div>
+
+      <div class="info-tile">
+        <span class="info-icon">⏰</span>
+        <div class="info-content">
+          <strong>ಸಮಯ:</strong> ಮಧ್ಯಾಹ್ನ 12:00 ಗಂಟೆಗೆ
+        </div>
+      </div>
+
+      <div class="info-tile">
+        <span class="info-icon">📍</span>
+        <div class="info-content">
+          <strong>ವಿಳಾಸ:</strong> ರಾಮಯ್ಯ ಬಡಾವಣೆ, ಶಂಕರ ನಗರ, ತಿಪಟೂರು
+        </div>
+      </div>
+
+      <div class="info-tile">
+        <span class="info-icon">📞</span>
+        <div class="info-content">
+          <strong>ಸಂಪರ್ಕ:</strong> 9964217340, 9535090924, 8431550994
+        </div>
+      </div>
+
+      <!-- ಮ್ಯಾಪ್ ಬಟನ್ -->
+      <a href="https://maps.app.goo.gl/GNvneLCB43KB8XCX6" class="map-button" target="_blank">
+        📍 ಮನೆಗೆ ಹೋಗುವ ದಾರಿ (Google Maps)
+      </a>
+    </div>
   </div>
+
 </body>
 </html>
