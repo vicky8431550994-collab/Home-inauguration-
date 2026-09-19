@@ -111,7 +111,6 @@
       align-items: center;
     }
 
-    /* Left Details Column */
     .hero-text-col {
       display: flex;
       flex-direction: column;
@@ -214,7 +213,7 @@
       line-height: 1.6;
     }
 
-    /* Unique "Click Me To Go Here" Navigation CTA */
+    /* CTA Row */
     .cta-row {
       display: flex;
       align-items: center;
@@ -237,22 +236,7 @@
       font-size: 15.5px;
       box-shadow: 0 12px 30px rgba(212, 175, 55, 0.45);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow: hidden;
-    }
-
-    .btn-maps-pulse::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50px;
-      border: 2px solid #ffd700;
-      animation: pulseGlow 2s infinite;
-      opacity: 0;
-    }
-
-    @keyframes pulseGlow {
-      0% { transform: scale(0.96); opacity: 0.8; }
-      100% { transform: scale(1.18); opacity: 0; }
+      cursor: pointer;
     }
 
     .btn-maps-pulse:hover {
@@ -311,19 +295,15 @@
       transition: transform 0.6s ease;
     }
 
-    .photo-wrap:hover img {
-      transform: scale(1.05);
-    }
-
-    /* Cinematic Animated Movie Play Button */
+    /* Animated Movie Play Button */
     .movie-play-btn {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
-      background: rgba(15, 12, 10, 0.75);
+      width: 82px;
+      height: 82px;
+      background: rgba(15, 12, 10, 0.8);
       backdrop-filter: blur(12px);
       border-radius: 50%;
       border: 2px solid #ffd700;
@@ -331,9 +311,10 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.55);
       transition: all 0.3s ease;
       z-index: 5;
+      outline: none;
     }
 
     .movie-play-btn::before, .movie-play-btn::after {
@@ -362,10 +343,10 @@
     .play-triangle {
       width: 0;
       height: 0;
-      border-top: 12px solid transparent;
-      border-bottom: 12px solid transparent;
-      border-left: 20px solid #ffd700;
-      margin-left: 4px;
+      border-top: 13px solid transparent;
+      border-bottom: 13px solid transparent;
+      border-left: 22px solid #ffd700;
+      margin-left: 5px;
       transition: border-left-color 0.3s;
     }
 
@@ -378,7 +359,7 @@
       top: 18px;
       right: 18px;
       padding: 8px 16px;
-      background: rgba(0, 0, 0, 0.65);
+      background: rgba(0, 0, 0, 0.68);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 215, 0, 0.3);
       border-radius: 50px;
@@ -445,6 +426,228 @@
       box-shadow: 0 0 10px #10b981;
     }
 
+    /* ===================================================
+       ALL THREE FEATURES: LUXURY HD TOUR MODAL SYSTEM 
+       =================================================== */
+    .tour-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 4, 6, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .tour-modal-backdrop.active {
+      display: flex;
+    }
+
+    .tour-modal {
+      width: 100%;
+      max-width: 850px;
+      background: #0e0e12;
+      border: 1.5px solid rgba(212, 175, 55, 0.4);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(212, 175, 55, 0.2);
+      animation: modalFadeUp 0.35s ease;
+    }
+
+    @keyframes modalFadeUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(18, 18, 24, 0.6);
+    }
+
+    .modal-title {
+      font-size: 18px;
+      color: #ffd700;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .close-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(239, 68, 68, 0.8);
+      border-color: #ef4444;
+    }
+
+    /* Modal Tabs (Option A, B, C) */
+    .modal-tabs {
+      display: flex;
+      background: rgba(10, 10, 14, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 16px 14px;
+      background: none;
+      border: none;
+      color: #a1a1aa;
+      font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      color: #ffd700;
+      border-bottom-color: #ffd700;
+      background: rgba(212, 175, 55, 0.06);
+    }
+
+    .tab-content {
+      display: none;
+      padding: 24px;
+      min-height: 380px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Tab 1: Video Tour View */
+    .video-view-wrap {
+      position: relative;
+      width: 100%;
+      height: 340px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .video-view-wrap video, .video-view-wrap iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: none;
+    }
+
+    /* Tab 2: HD Photo Walkthrough Gallery */
+    .gallery-view {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 14px;
+      height: 340px;
+    }
+
+    .main-gallery-photo {
+      border-radius: 16px;
+      overflow: hidden;
+      height: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .main-gallery-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-side-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+    }
+
+    .side-photo {
+      flex: 1;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      background: #18181b;
+      cursor: pointer;
+    }
+
+    .side-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .side-photo:hover img {
+      transform: scale(1.08);
+    }
+
+    .side-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      padding: 4px 8px;
+      background: rgba(0,0,0,0.7);
+      border-radius: 6px;
+      font-size: 10.5px;
+      color: #fff;
+    }
+
+    /* Tab 3: Interactive Route & Live Navigation */
+    .maps-view-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 340px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(12, 12, 16, 0.95) 75%);
+      border-radius: 18px;
+      border: 1px dashed rgba(212, 175, 55, 0.4);
+      padding: 20px;
+    }
+
+    .map-icon-large {
+      font-size: 54px;
+      filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
+    }
+
+    .map-prompt-text {
+      font-size: 16px;
+      color: #f4f4f5;
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
     @media (max-width: 850px) {
       .container {
         grid-template-columns: 1fr;
@@ -455,6 +658,14 @@
       }
       .spec-matrix {
         grid-template-columns: 1fr;
+      }
+      .gallery-view {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .gallery-side-col {
+        flex-direction: row;
+        height: 110px;
       }
     }
   </style>
@@ -527,9 +738,9 @@
             <span>HD TOUR</span>
           </div>
 
-          <a href="https://www.google.com/maps/search/?api=1&query=Ramayya+Layout+Shankar+Nagar+Tiptur" target="_blank" class="movie-play-btn" title="ಕ್ಲಿಕ್ ಮಾಡಿ ದಾರಿ ನೋಡಿ">
+          <button class="movie-play-btn" onclick="openTourModal()" title="HD Tour ವೀಕ್ಷಿಸಿ">
             <div class="play-triangle"></div>
-          </a>
+          </button>
 
           <img src="house.jpg" alt="ಅನು ಶಿವ ನಿಲಯ">
 
@@ -550,5 +761,38 @@
 
   </main>
 
-</body>
-</html>
+  <div class="tour-modal-backdrop" id="tourBackdrop" onclick="handleBackdropClick(event)">
+    <div class="tour-modal" id="tourModal">
+      
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>✨</span>
+          <span>ಅನು ಶಿವ ನಿಲಯ | HD Tour ಅನುಭವ</span>
+        </div>
+        <button class="close-btn" onclick="closeTourModal()">✕</button>
+      </div>
+
+      <div class="modal-tabs">
+        <button class="tab-btn active" onclick="switchTab(0)">
+          🎬 1. ಸಿನಿಮಾಟಿಕ್ ವಿಡಿಯೋ ಟೂರ್
+        </button>
+        <button class="tab-btn" onclick="switchTab(1)">
+          🖼️ 2. HD ಫೋಟೋ ವಾಕ್‌ಥ್ರೂ
+        </button>
+        <button class="tab-btn" onclick="switchTab(2)">
+          📍 3. ಲೈವ್ ಗೂಗಲ್ ಮ್ಯಾಪ್ ರೂಟ್
+        </button>
+      </div>
+
+      <div class="tab-content active" id="tab-0">
+        <div class="video-view-wrap">
+          <video controls autoplay muted loop playsinline poster="house.jpg">
+            <source src="tour.mp4" type="video/mp4">
+            ನಿಮ್ಮ ಬ್ರೌಸರ್ ವಿಡಿಯೋ ಬೆಂಬಲಿಸುವುದಿಲ್ಲ.
+          </video>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-1">
+        <div class="gallery-view">
+    
