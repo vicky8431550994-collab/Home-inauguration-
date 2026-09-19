@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವ ಆಮಂತ್ರಣ</title>
+  <title>ಅನು ಶಿವ ನಿಲಯ | ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Noto+Serif+Kannada:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Serif+Kannada:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
+      --bg-dark: #09090b;
+      --card-bg: rgba(22, 22, 26, 0.75);
       --gold-primary: #d4af37;
-      --gold-light: #fff2a3;
-      --gold-dark: #aa7c11;
-      --emerald-dark: #041f17;
-      --ruby-dark: #24050e;
+      --gold-light: #f5e2a3;
+      --border-glow: rgba(212, 175, 55, 0.22);
+      --accent-rose: #be123c;
+      --accent-emerald: #059669;
     }
 
     * {
@@ -23,307 +25,412 @@
     }
 
     body {
+      background-color: var(--bg-dark);
+      color: #f4f4f5;
       font-family: 'Noto Serif Kannada', serif;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 14px;
-      position: relative;
-      background-color: #050406;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* Cinematic Blurred Background using House Photo */
-    .bg-photo-layer {
+    /* Ambient Dual Color Lighting */
+    .ambient-glow-left {
       position: fixed;
-      inset: 0;
-      background: url('house.jpg') center center/cover no-repeat;
-      filter: blur(14px) brightness(0.28) saturate(1.2);
-      transform: scale(1.1);
-      z-index: 0;
-    }
-
-    /* Dynamic Dual-Color Aurora Ambient Glow */
-    .bg-overlay-glow {
-      position: fixed;
-      inset: 0;
-      background: 
-        radial-gradient(circle at 15% 20%, rgba(6, 78, 59, 0.45), transparent 45%),
-        radial-gradient(circle at 85% 80%, rgba(136, 19, 55, 0.5), transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.7), rgba(5, 4, 6, 0.95));
-      z-index: 1;
+      top: -15%;
+      left: -15%;
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(circle, rgba(190, 18, 60, 0.18) 0%, transparent 65%);
       pointer-events: none;
+      z-index: 0;
+      filter: blur(80px);
+    }
+    .ambient-glow-right {
+      position: fixed;
+      bottom: -10%;
+      right: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(5, 150, 105, 0.18) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(80px);
     }
 
-    .main-wrapper {
+    /* Subtle Grid Background Pattern */
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Luxury Header */
+    header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 19px;
+      letter-spacing: 4px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #fff, var(--gold-light), #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
+
+    .pill-tag {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      padding: 6px 14px;
+      border-radius: 50px;
+      border: 1px solid var(--border-glow);
+      background: rgba(212, 175, 55, 0.08);
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    /* Main Container */
+    .container {
       position: relative;
       z-index: 2;
-      width: 100%;
-      max-width: 450px;
-      perspective: 1200px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 40px;
+      align-items: center;
     }
 
-    /* Ultra Luxury 3D Card */
-    .luxury-card {
+    /* Left Hero Column */
+    .hero-text-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .mantra-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--gold-light);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .hero-title {
+      font-size: clamp(34px, 4.2vw, 54px);
+      line-height: 1.25;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-title span {
+      display: block;
+      background: linear-gradient(135deg, #ffd700, #ffb300, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 4px 25px rgba(212, 175, 55, 0.3);
+    }
+
+    .hero-desc {
+      font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #a1a1aa;
+      max-width: 520px;
+    }
+
+    /* Spec Matrix (Aetheria style feature list) */
+    .spec-matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .matrix-item {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 16px 18px;
+      transition: all 0.3s ease;
       position: relative;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(20, 10, 15, 0.45) 50%, rgba(5, 30, 22, 0.45) 100%);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-radius: 32px;
-      padding: 32px 22px 26px;
-      text-align: center;
-      border: 1px solid rgba(255, 215, 0, 0.25);
-      box-shadow: 
-        0 30px 60px -15px rgba(0, 0, 0, 0.9),
-        0 0 35px rgba(212, 175, 55, 0.18),
-        inset 0 1px 1px rgba(255, 255, 255, 0.35);
       overflow: hidden;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    .luxury-card:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 
-        0 35px 70px -10px rgba(0, 0, 0, 0.95),
-        0 0 45px rgba(212, 175, 55, 0.28);
+    .matrix-item:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+      transform: translateY(-3px);
     }
 
-    /* Dual Color Border Accent */
-    .luxury-card::after {
+    .matrix-item::before {
       content: '';
       position: absolute;
-      inset: -1.5px;
-      border-radius: 33px;
-      background: linear-gradient(135deg, #ffd700, rgba(255, 215, 0, 0.1), #059669, #be123c, #ffd700);
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--gold-primary), transparent);
+    }
+
+    .matrix-title {
+      font-size: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #71717a;
+      margin-bottom: 6px;
+    }
+
+    .matrix-value {
+      font-size: 15px;
+      color: #fafafa;
+      font-weight: 700;
+    }
+
+    /* Action Buttons Row */
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 28px;
+      border-radius: 40px;
+      background: linear-gradient(135deg, #ffd700, #c89518);
+      color: #0b0904;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 15px;
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(212, 175, 55, 0.5);
+    }
+
+    .btn-outline {
+      padding: 15px 26px;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fafafa;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Right Showcase Column (Video Style Showcase) */
+    .hero-card-col {
+      position: relative;
+    }
+
+    .estate-card {
+      position: relative;
+      background: var(--card-bg);
+      backdrop-filter: blur(24px);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 16px;
+      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+    }
+
+    .estate-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.4), transparent 40%, rgba(190,18,60,0.3));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
-      opacity: 0.85;
     }
 
-    .mantra {
-      font-size: 17px;
-      font-weight: 700;
-      background: linear-gradient(90deg, #ffd700, #fff7c2, #e5a93b);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: 1.5px;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.4));
-    }
-
-    .house-title {
-      font-size: 32px;
-      font-weight: 900;
-      color: #ffffff;
-      margin-bottom: 10px;
-      letter-spacing: 0.5px;
-      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.25);
-    }
-
-    .divider {
-      width: 80px;
-      height: 3px;
-      margin: 0 auto 16px;
-      background: linear-gradient(90deg, transparent, #ffd700, transparent);
-      border-radius: 2px;
-    }
-
-    .invitation-quote {
-      font-size: 14.5px;
-      line-height: 1.65;
-      color: #ede5dc;
-      margin-bottom: 22px;
-      font-weight: 500;
-      padding: 0 10px;
-    }
-
-    /* 3D Showcase Window for House Photo */
-    .photo-showcase {
+    .photo-wrap {
       position: relative;
       width: 100%;
-      height: 250px;
-      border-radius: 22px;
+      height: 380px;
+      border-radius: 18px;
       overflow: hidden;
-      margin-bottom: 22px;
-      border: 1.5px solid rgba(255, 215, 0, 0.45);
-      box-shadow: 
-        0 18px 35px rgba(0, 0, 0, 0.7),
-        0 0 25px rgba(212, 175, 55, 0.22);
     }
 
-    .photo-showcase img {
+    .photo-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .photo-showcase:hover img {
-      transform: scale(1.06);
+    .photo-wrap:hover img {
+      transform: scale(1.05);
     }
 
-    /* Glass Info Grid */
-    .details-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-      margin-bottom: 22px;
-    }
-
-    .detail-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
-      border: 1px solid rgba(255, 215, 0, 0.2);
-      border-radius: 16px;
-      padding: 13px 16px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-align: left;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(8px);
-    }
-
-    .detail-card:nth-child(odd) {
-      border-left: 3.5px solid #10b981;
-    }
-
-    .detail-card:nth-child(even) {
-      border-left: 3.5px solid #f43f5e;
-    }
-
-    .icon-badge {
-      font-size: 20px;
-      min-width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      background: rgba(255, 215, 0, 0.1);
-      border: 1px solid rgba(255, 215, 0, 0.25);
-    }
-
-    .detail-text {
-      font-size: 14.5px;
-      line-height: 1.5;
-      color: #f7f3ed;
-    }
-
-    .detail-text b {
-      color: #ffd700;
-      font-weight: 700;
-      margin-right: 4px;
-    }
-
-    /* 3D Metallic Gold Button */
-    .btn-maps {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 16px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-family: 'Noto Serif Kannada', serif;
-      font-size: 16px;
-      font-weight: 800;
-      color: #1a0808;
-      background: linear-gradient(135deg, #fff2a3 0%, #d4af37 40%, #aa7c11 100%);
-      box-shadow: 
-        0 12px 28px rgba(212, 175, 55, 0.4),
-        inset 0 1.5px 1px rgba(255, 255, 255, 0.8);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.25s ease;
-    }
-
-    .btn-maps::before {
-      content: '';
+    .floating-card-tag {
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transform: skewX(-25deg);
-      transition: left 0.75s ease;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      padding: 14px 18px;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(16px);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .btn-maps:hover::before {
-      left: 150%;
+    .tag-estate-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
     }
 
-    .btn-maps:active {
-      transform: scale(0.97);
-      box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
+    .tag-estate-loc {
+      font-size: 12px;
+      color: #a1a1aa;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      margin-right: 6px;
+      box-shadow: 0 0 10px #10b981;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 850px) {
+      .container {
+        grid-template-columns: 1fr;
+        padding: 24px 16px 40px;
+      }
+      .photo-wrap {
+        height: 280px;
+      }
+      .spec-matrix {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Cinematic Background Layers -->
-  <div class="bg-photo-layer"></div>
-  <div class="bg-overlay-glow"></div>
+  <div class="ambient-glow-left"></div>
+  <div class="ambient-glow-right"></div>
+  <div class="grid-overlay"></div>
 
-  <main class="main-wrapper">
-    <div class="luxury-card">
-      <div class="mantra">✨ || ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ || ✨</div>
-      <h1 class="house-title">ಅನು ಶಿವ ನಿಲಯ</h1>
-      <div class="divider"></div>
-      
-      <p class="invitation-quote">
-        ನೂತನ ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವದ ಶುಭ ಸಂದರ್ಭಕ್ಕೆ ತಮಗೂ ಹಾಗೂ ತಮ್ಮ ಕುಟುಂಬದವರಿಗೂ ಪ್ರೀತಿಯ ಆದರದ ಸುಸ್ವಾಗತ
+  <header>
+    <div class="brand-logo">ಅನು ಶಿವ ನಿಲಯ</div>
+    <div class="pill-tag">ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವ</div>
+  </header>
+
+  <main class="container">
+    
+    <div class="hero-text-col">
+      <div class="mantra-badge">
+        ✨ || ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ || ✨
+      </div>
+
+      <h1 class="hero-title">
+        ಹೊಸ ಮನೆ, ಹೊಸ ಕನಸು
+        <span>ಅನು ಶಿವ ನಿಲಯ</span>
+      </h1>
+
+      <p class="hero-desc">
+        ನಮ್ಮ ನೂತನ ನಿವಾಸದ ಗೃಹಪ್ರವೇಶದ ಶುಭ ಸಂದರ್ಭಕ್ಕೆ ತಮಗೂ ಹಾಗೂ ತಮ್ಮ ಕುಟುಂಬದವರಿಗೂ ಆದರದ ಹಾರ್ದಿಕ ಸುಸ್ವಾಗತ. ತಮ್ಮ ಉಪಸ್ಥಿತಿಯೇ ನಮಗೆ ಆಶೀರ್ವಾದ.
       </p>
 
-      <!-- 3D Framed House Photo -->
-      <div class="photo-showcase">
-        <img src="house.jpg" alt="ಅನು ಶಿವ ನಿಲಯ">
-      </div>
-
-      <!-- Luxury Dual-Tone Info Grid -->
-      <div class="details-grid">
-        <div class="detail-card">
-          <span class="icon-badge">📅</span>
-          <div class="detail-text">
-            <b>ದಿನಾಂಕ:</b> 28-11-2026 ರಿಂದ 29-11-2026
-          </div>
+      <div class="spec-matrix">
+        <div class="matrix-item">
+          <div class="matrix-title">ಶುಭ ದಿನಾಂಕ</div>
+          <div class="matrix-value">28 - 29 ನವೆಂಬರ್ 2026</div>
         </div>
 
-        <div class="detail-card">
-          <span class="icon-badge">⏰</span>
-          <div class="detail-text">
-            <b>ಸಮಯ:</b> ಮಧ್ಯಾಹ್ನ 12:00 ಗಂಟೆಗೆ
-          </div>
+        <div class="matrix-item">
+          <div class="matrix-title">ಶುಭ ಮುಹೂರ್ತ</div>
+          <div class="matrix-value">ಮಧ್ಯಾಹ್ನ 12:00 ಗಂಟೆಗೆ</div>
         </div>
 
-        <div class="detail-card">
-          <span class="icon-badge">📍</span>
-          <div class="detail-text">
-            <b>ವಿಳಾಸ:</b> ರಾಮಯ್ಯ ಬಡಾವಣೆ, ಶಂಕರ ನಗರ, ತಿಪಟೂರು
-          </div>
+        <div class="matrix-item">
+          <div class="matrix-title">ವಿಳಾಸ</div>
+          <div class="matrix-value">ರಾಮಯ್ಯ ಬಡಾವಣೆ, ಶಂಕರ ನಗರ, ತಿಪಟೂರು</div>
         </div>
 
-        <div class="detail-card">
-          <span class="icon-badge">📞</span>
-          <div class="detail-text">
-            <b>ಸಂಪರ್ಕ:</b> 9964217340, 9535090924, 8431550994
-          </div>
+        <div class="matrix-item">
+          <div class="matrix-title">ಸಂಪರ್ಕ ಸಂಖ್ಯೆಗಳು</div>
+          <div class="matrix-value">9964217340, 9535090924</div>
         </div>
       </div>
 
-      <!-- Ultra Glossy Navigation CTA -->
-      <a href="https://maps.app.goo.gl/GNvneLCB43KB8XCX6" class="btn-maps" target="_blank">
-        <span>📍 ಮನೆಗೆ ಹೋಗುವ ದಾರಿ (Google Maps)</span>
-      </a>
+      <div class="cta-row">
+        <a href="https://maps.app.goo.gl/GNvneLCB43KB8XCX6" target="_blank" class="btn-gold">
+          📍 ಗೂಗಲ್ ಮ್ಯಾಪ್ ಮೂಲಕ ಬನ್ನಿ
+        </a>
+        <a href="tel:9964217340" class="btn-outline">
+          📞 ಕರೆ ಮಾಡಿ
+        </a>
+      </div>
     </div>
+
+    <div class="hero-card-col">
+      <div class="estate-card">
+        <div class="photo-wrap">
+          <img src="house.jpg" alt="ಅನು ಶಿವ ನಿಲಯ">
+          <div class="floating-card-tag">
+            <div>
+              <div class="tag-estate-name">ಅನು ಶಿವ ನಿಲಯ</div>
+              <div class="tag-estate-loc">ತಿಪಟೂರು, ಕರ್ನಾಟಕ</div>
+            </div>
+            <div>
+              <span class="status-dot"></span>
+              <span style="font-size: 12px; color: #10b981; font-weight: 600;">ಸ್ವಾಗತ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
 </body>
 </html>
-
