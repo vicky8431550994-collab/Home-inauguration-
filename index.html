@@ -6,16 +6,13 @@
   <title>ಅನು ಶಿವ ನಿಲಯ | ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Serif+Kannada:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Noto+Serif+Kannada:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #09090b;
-      --card-bg: rgba(22, 22, 26, 0.75);
       --gold-primary: #d4af37;
-      --gold-light: #f5e2a3;
-      --border-glow: rgba(212, 175, 55, 0.22);
-      --accent-rose: #be123c;
-      --accent-emerald: #059669;
+      --gold-light: #fef08a;
+      --border-glow: rgba(212, 175, 55, 0.35);
+      --card-glass: rgba(12, 12, 16, 0.82);
     }
 
     * {
@@ -25,89 +22,88 @@
     }
 
     body {
-      background-color: var(--bg-dark);
+      background-color: #060608;
       color: #f4f4f5;
       font-family: 'Noto Serif Kannada', serif;
       min-height: 100vh;
-      overflow-x: hidden;
       position: relative;
+      overflow-x: hidden;
     }
 
-    /* Ambient Dual Color Lighting */
-    .ambient-glow-left {
-      position: fixed;
-      top: -15%;
-      left: -15%;
-      width: 55vw;
-      height: 55vw;
-      background: radial-gradient(circle, rgba(190, 18, 60, 0.18) 0%, transparent 65%);
-      pointer-events: none;
-      z-index: 0;
-      filter: blur(80px);
-    }
-    .ambient-glow-right {
-      position: fixed;
-      bottom: -10%;
-      right: -10%;
-      width: 50vw;
-      height: 50vw;
-      background: radial-gradient(circle, rgba(5, 150, 105, 0.18) 0%, transparent 65%);
-      pointer-events: none;
-      z-index: 0;
-      filter: blur(80px);
-    }
-
-    /* Subtle Grid Background Pattern */
-    .grid-overlay {
+    /* Fullscreen High-Definition House Photo Background */
+    .hero-bg-image {
       position: fixed;
       inset: 0;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background: url('house.jpg') center center / cover no-repeat;
+      z-index: 0;
+      filter: contrast(1.1) brightness(0.62) saturate(1.15);
+      transform: scale(1.02);
+    }
+
+    /* Dual Color Luxury Overlay (Aetheria Architectural Tint) */
+    .hero-bg-overlay {
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 85% 15%, rgba(190, 18, 60, 0.28), transparent 45%),
+        radial-gradient(circle at 15% 85%, rgba(5, 150, 105, 0.25), transparent 50%),
+        linear-gradient(180deg, rgba(6, 6, 8, 0.6) 0%, rgba(6, 6, 8, 0.88) 65%, #060608 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Grid Mesh Pattern */
+    .grid-mesh {
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
       background-size: 32px 32px;
       opacity: 0.6;
       pointer-events: none;
       z-index: 1;
     }
 
-    /* Luxury Header */
+    /* Navigation Header */
     header {
       position: relative;
       z-index: 10;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 22px 30px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(12px);
+      padding: 20px 32px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(6, 6, 8, 0.55);
     }
 
     .brand-logo {
-      font-family: 'Cinzel', serif;
-      font-size: 19px;
-      letter-spacing: 4px;
-      font-weight: 800;
-      background: linear-gradient(90deg, #fff, var(--gold-light), #fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffd700;
+      letter-spacing: 1px;
+      padding: 4px 0;
+      line-height: 1.5;
     }
 
-    .pill-tag {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+    .pill-status {
+      font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
       font-size: 11px;
       letter-spacing: 2px;
-      padding: 6px 14px;
+      padding: 6px 16px;
       border-radius: 50px;
       border: 1px solid var(--border-glow);
-      background: rgba(212, 175, 55, 0.08);
+      background: rgba(212, 175, 55, 0.12);
       color: var(--gold-light);
       text-transform: uppercase;
+      font-weight: 600;
     }
 
-    /* Main Container */
+    /* Main Section */
     .container {
       position: relative;
       z-index: 2;
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 40px 24px 60px;
       display: grid;
@@ -116,69 +112,81 @@
       align-items: center;
     }
 
-    /* Left Hero Column */
+    /* Left Content Column */
     .hero-text-col {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
     .mantra-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 14px;
+      font-size: 16px;
       color: var(--gold-light);
-      font-weight: 600;
-      letter-spacing: 1px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      line-height: 1.6;
+      padding-top: 4px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
     }
 
+    /* Main Title with Perfect Kannada Typography Spacing */
     .hero-title {
-      font-size: clamp(34px, 4.2vw, 54px);
-      line-height: 1.25;
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.5; /* Prevents Kannada top glyph clipping */
       font-weight: 900;
       color: #ffffff;
-      letter-spacing: -0.5px;
+      padding-top: 6px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.95);
     }
 
-    .hero-title span {
+    .hero-title .highlight-house {
       display: block;
-      background: linear-gradient(135deg, #ffd700, #ffb300, #f59e0b);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 4px 25px rgba(212, 175, 55, 0.3);
+      color: #ffd700;
+      font-size: 1.15em;
+      line-height: 1.45;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      text-shadow: 0 0 25px rgba(255, 215, 0, 0.45), 0 3px 12px rgba(0,0,0,0.9);
     }
 
     .hero-desc {
-      font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
-      font-size: 15px;
-      line-height: 1.8;
-      color: #a1a1aa;
-      max-width: 520px;
+      font-family: 'Noto Serif Kannada', serif;
+      font-size: 15.5px;
+      line-height: 1.85;
+      color: #e4e4e7;
+      max-width: 530px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.9);
     }
 
-    /* Spec Matrix (Aetheria style feature list) */
+    /* Matrix Specs Grid */
     .spec-matrix {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     .matrix-item {
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
+      background: var(--card-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
       padding: 16px 18px;
-      transition: all 0.3s ease;
       position: relative;
-      overflow: hidden;
+      overflow: visible; /* Prevents cut-off */
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     }
 
     .matrix-item:hover {
-      border-color: rgba(212, 175, 55, 0.4);
+      border-color: rgba(212, 175, 55, 0.5);
       transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
     }
 
     .matrix-item::before {
@@ -186,32 +194,37 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 3px;
+      width: 3.5px;
       height: 100%;
+      border-radius: 16px 0 0 16px;
       background: linear-gradient(180deg, var(--gold-primary), transparent);
     }
 
     .matrix-title {
       font-size: 12px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
       text-transform: uppercase;
       letter-spacing: 1.2px;
-      color: #71717a;
+      color: #a1a1aa;
       margin-bottom: 6px;
+      font-weight: 600;
+      line-height: 1.4;
     }
 
     .matrix-value {
-      font-size: 15px;
+      font-size: 14.5px;
       color: #fafafa;
       font-weight: 700;
+      line-height: 1.6;
+      word-break: break-word;
     }
 
-    /* Action Buttons Row */
+    /* Buttons Row */
     .cta-row {
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-top: 15px;
+      margin-top: 12px;
       flex-wrap: wrap;
     }
 
@@ -227,45 +240,49 @@
       text-decoration: none;
       font-weight: 800;
       font-size: 15px;
-      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.35);
+      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.4);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      line-height: 1.4;
     }
 
     .btn-gold:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 36px rgba(212, 175, 55, 0.5);
+      box-shadow: 0 16px 40px rgba(212, 175, 55, 0.55);
     }
 
     .btn-outline {
       padding: 15px 26px;
       border-radius: 40px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fafafa;
       text-decoration: none;
       font-size: 14px;
       font-weight: 600;
-      transition: background 0.2s;
+      transition: background 0.2s, border-color 0.2s;
+      line-height: 1.4;
     }
 
     .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.4);
     }
 
-    /* Right Showcase Column (Video Style Showcase) */
+    /* Right Showcase Architecture Card */
     .hero-card-col {
       position: relative;
     }
 
     .estate-card {
       position: relative;
-      background: var(--card-bg);
+      background: var(--card-glass);
       backdrop-filter: blur(24px);
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       padding: 16px;
-      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.85);
       overflow: hidden;
     }
 
@@ -273,9 +290,9 @@
       content: '';
       position: absolute;
       inset: 0;
-      border-radius: 24px;
-      padding: 1px;
-      background: linear-gradient(135deg, rgba(212,175,55,0.4), transparent 40%, rgba(190,18,60,0.3));
+      border-radius: 26px;
+      padding: 1.5px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.6), transparent 45%, rgba(190,18,60,0.4));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -285,9 +302,10 @@
     .photo-wrap {
       position: relative;
       width: 100%;
-      height: 380px;
-      border-radius: 18px;
+      height: 390px;
+      border-radius: 20px;
       overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .photo-wrap img {
@@ -308,24 +326,27 @@
       left: 16px;
       right: 16px;
       padding: 14px 18px;
-      background: rgba(9, 9, 11, 0.85);
-      backdrop-filter: blur(16px);
+      background: rgba(9, 9, 12, 0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .tag-estate-name {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       color: #fff;
+      line-height: 1.4;
     }
 
     .tag-estate-loc {
       font-size: 12px;
       color: #a1a1aa;
+      line-height: 1.4;
     }
 
     .status-dot {
@@ -338,14 +359,14 @@
       box-shadow: 0 0 10px #10b981;
     }
 
-    /* Mobile Responsive */
+    /* Mobile Responsive View */
     @media (max-width: 850px) {
       .container {
         grid-template-columns: 1fr;
         padding: 24px 16px 40px;
       }
       .photo-wrap {
-        height: 280px;
+        height: 290px;
       }
       .spec-matrix {
         grid-template-columns: 1fr;
@@ -355,17 +376,21 @@
 </head>
 <body>
 
-  <div class="ambient-glow-left"></div>
-  <div class="ambient-glow-right"></div>
-  <div class="grid-overlay"></div>
+  <!-- Fullscreen HD House Background -->
+  <div class="hero-bg-image"></div>
+  <div class="hero-bg-overlay"></div>
+  <div class="grid-mesh"></div>
 
+  <!-- Header Section -->
   <header>
     <div class="brand-logo">ಅನು ಶಿವ ನಿಲಯ</div>
-    <div class="pill-tag">ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವ</div>
+    <div class="pill-status">ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವ</div>
   </header>
 
+  <!-- Main Showcase Container -->
   <main class="container">
     
+    <!-- Left Column: Details -->
     <div class="hero-text-col">
       <div class="mantra-badge">
         ✨ || ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ || ✨
@@ -373,13 +398,14 @@
 
       <h1 class="hero-title">
         ಹೊಸ ಮನೆ, ಹೊಸ ಕನಸು
-        <span>ಅನು ಶಿವ ನಿಲಯ</span>
+        <span class="highlight-house">ಅನು ಶಿವ ನಿಲಯ</span>
       </h1>
 
       <p class="hero-desc">
         ನಮ್ಮ ನೂತನ ನಿವಾಸದ ಗೃಹಪ್ರವೇಶದ ಶುಭ ಸಂದರ್ಭಕ್ಕೆ ತಮಗೂ ಹಾಗೂ ತಮ್ಮ ಕುಟುಂಬದವರಿಗೂ ಆದರದ ಹಾರ್ದಿಕ ಸುಸ್ವಾಗತ. ತಮ್ಮ ಉಪಸ್ಥಿತಿಯೇ ನಮಗೆ ಆಶೀರ್ವಾದ.
       </p>
 
+      <!-- Matrix Spec Grid with All 3 Contact Numbers -->
       <div class="spec-matrix">
         <div class="matrix-item">
           <div class="matrix-title">ಶುಭ ದಿನಾಂಕ</div>
@@ -398,20 +424,22 @@
 
         <div class="matrix-item">
           <div class="matrix-title">ಸಂಪರ್ಕ ಸಂಖ್ಯೆಗಳು</div>
-          <div class="matrix-value">9964217340, 9535090924</div>
+          <div class="matrix-value">9964217340<br>9535090924<br>8431550994</div>
         </div>
       </div>
 
+      <!-- Action Buttons -->
       <div class="cta-row">
         <a href="https://maps.app.goo.gl/GNvneLCB43KB8XCX6" target="_blank" class="btn-gold">
           📍 ಗೂಗಲ್ ಮ್ಯಾಪ್ ಮೂಲಕ ಬನ್ನಿ
         </a>
-        <a href="tel:9964217340" class="btn-outline">
+        <a href="tel:8431550994" class="btn-outline">
           📞 ಕರೆ ಮಾಡಿ
         </a>
       </div>
     </div>
 
+    <!-- Right Column: Architecture Showcase Card -->
     <div class="hero-card-col">
       <div class="estate-card">
         <div class="photo-wrap">
