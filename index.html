@@ -3,24 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವ | Luxury Invitation & Memories</title>
+  <title>ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವ | Vicky's Home</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- GSAP Animation Engine -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Sans+Kannada:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #070709;
-      --card-bg: rgba(20, 20, 26, 0.85);
+      --bg: #07070a;
+      --card-bg: rgba(20, 20, 26, 0.75);
       --gold: #f59e0b;
       --gold-light: #fbbf24;
       --gold-glow: rgba(245, 158, 11, 0.4);
-      --purple-glow: rgba(147, 51, 234, 0.25);
+      --purple-glow: rgba(147, 51, 234, 0.3);
       --text-dim: #9ca3af;
       --white: #ffffff;
     }
@@ -29,6 +25,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -36,247 +33,174 @@
       color: var(--white);
       font-family: 'Noto Sans Kannada', sans-serif;
       overflow-x: hidden;
-      perspective: 1200px;
-    }
-
-    /* Cinematic Ambient Glow */
-    .ambient-glow {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 750px;
-      height: 750px;
-      background: radial-gradient(circle, var(--gold-glow) 0%, var(--purple-glow) 50%, rgba(7,7,9,0) 75%);
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.75;
-    }
-
-    .scroll-track {
-      height: 400vh;
-      position: relative;
-    }
-
-    .showcase-stage {
-      height: 100vh;
-      width: 100vw;
-      position: sticky;
-      top: 0;
-      overflow: hidden;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      transform-style: preserve-3d;
+      position: relative;
     }
 
-    /* Top Titles & Date Banner */
-    .header-text {
-      text-align: center;
-      position: absolute;
-      top: 7%;
-      z-index: 10;
+    /* Ambient Cinematic Lighting */
+    .ambient-glow {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--gold-glow) 0%, var(--purple-glow) 45%, rgba(7,7,10,0) 75%);
       pointer-events: none;
-      width: 90%;
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    .main-wrapper {
+      width: 100%;
+      max-width: 500px;
+      padding: 40px 20px 80px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Header Section */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
     }
 
     .date-badge {
       display: inline-block;
-      background: rgba(245, 158, 11, 0.12);
+      background: rgba(245, 158, 11, 0.15);
       border: 1px solid var(--gold);
       color: var(--gold-light);
-      padding: 6px 18px;
+      padding: 6px 20px;
       border-radius: 50px;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
       box-shadow: 0 0 20px var(--gold-glow);
     }
 
-    .header-text h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      color: #fff;
+    h1 {
+      font-size: 2.2rem;
       font-weight: 700;
-      letter-spacing: 2px;
-      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9);
-    }
-
-    .header-text p {
-      color: var(--gold);
-      font-size: clamp(0.95rem, 2vw, 1.2rem);
-      margin-top: 4px;
+      background: linear-gradient(135deg, #ffffff 40%, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       letter-spacing: 1px;
     }
 
-    /* Center 3D Hero Object */
-    .hero-house-card {
-      width: clamp(290px, 32vw, 370px);
-      height: clamp(390px, 47vh, 490px);
-      background: #18181b;
-      border: 2px solid rgba(245, 158, 11, 0.6);
-      border-radius: 26px;
-      overflow: hidden;
-      position: absolute;
-      z-index: 5;
-      transform-style: preserve-3d;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.95), 0 0 55px var(--gold-glow);
-      will-change: transform, opacity;
-    }
-
-    .hero-house-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-house-card .badge {
-      position: absolute;
-      bottom: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--gold);
-      color: var(--gold-light);
-      padding: 7px 18px;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    /* 3D Fan-out Cards */
-    .memories-fanout {
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 4;
-      transform-style: preserve-3d;
-    }
-
-    .memory-card {
-      position: absolute;
-      width: clamp(200px, 20vw, 250px);
-      height: clamp(280px, 32vh, 340px);
-      background: var(--card-bg);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.85);
-      transform-style: preserve-3d;
-      opacity: 0;
-      transform: scale(0.5);
-      will-change: transform, opacity;
-    }
-
-    .memory-card img {
-      width: 100%;
-      height: 70%;
-      object-fit: cover;
-    }
-
-    .card-info {
-      padding: 12px;
-      text-align: center;
-    }
-
-    .card-info h4 {
+    .subtitle {
       color: var(--gold);
-      font-size: 1rem;
-    }
-
-    .card-info p {
-      color: var(--text-dim);
-      font-size: 0.78rem;
+      font-size: 1.05rem;
       margin-top: 4px;
     }
 
-    .scroll-hint {
-      position: absolute;
-      bottom: 25px;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      color: var(--gold);
-      animation: bounce 2s infinite ease-in-out;
-      z-index: 10;
-    }
-
-    @keyframes bounce {
-      0%, 100% { opacity: 0.4; transform: translateY(0); }
-      50% { opacity: 1; transform: translateY(8px); }
-    }
-
-    /* Bottom Luxury Details & Map Section */
-    .bottom-section {
-      min-height: 85vh;
-      background: #0b0b0e;
-      padding: 80px 20px;
-      position: relative;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .invitation-card {
-      max-width: 680px;
+    /* 3D Showcase Portal */
+    .portal-3d {
       width: 100%;
+      height: 440px;
+      perspective: 1000px;
+      margin-bottom: 35px;
+      position: relative;
+    }
+
+    .portal-card {
+      width: 100%;
+      height: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
       background: #141419;
+      border: 2px solid rgba(245, 158, 11, 0.6);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 45px var(--gold-glow);
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease-out;
+    }
+
+    .portal-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portal-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      padding: 8px 22px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    /* Invitation Card Box */
+    .invite-box {
+      width: 100%;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
       border: 1px solid rgba(245, 158, 11, 0.35);
       border-radius: 24px;
-      padding: 40px 25px;
-      line-height: 1.8;
-      box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 30px rgba(245, 158, 11, 0.1);
+      padding: 35px 22px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
     }
 
-    .invitation-card h2 {
+    .invite-box h2 {
+      font-size: 1.7rem;
       color: var(--gold);
-      font-size: 2rem;
-      margin-bottom: 0.8rem;
+      margin-bottom: 15px;
+      font-weight: 700;
     }
 
-    .event-dates {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #fff;
-      margin: 15px 0 20px;
-      padding: 12px;
+    .details-pill {
       background: rgba(245, 158, 11, 0.08);
-      border-radius: 12px;
-      border: 1px dashed rgba(245, 158, 11, 0.4);
+      border: 1px dashed rgba(245, 158, 11, 0.45);
+      border-radius: 16px;
+      padding: 16px 14px;
+      margin: 18px 0;
+      line-height: 1.8;
+      font-size: 1rem;
+      color: #fff;
     }
 
+    .invite-text {
+      color: #d1d5db;
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    /* Google Maps Button */
     .map-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
+      width: 100%;
       background: linear-gradient(135deg, #f59e0b, #d97706);
       color: #000;
       font-weight: 700;
-      font-size: 1rem;
-      padding: 14px 28px;
+      font-size: 1.05rem;
+      padding: 16px 24px;
       border-radius: 50px;
       text-decoration: none;
-      margin-top: 25px;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .map-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(245, 158, 11, 0.5);
-      color: #000;
+    .map-btn:active {
+      transform: scale(0.97);
     }
   </style>
 </head>
@@ -284,155 +208,70 @@
 
   <div class="ambient-glow"></div>
 
-  <div class="scroll-track">
-    <div class="showcase-stage">
-      
-      <div class="header-text">
-        <div class="date-badge">28 & 29 ನವೆಂಬರ್ 2026</div>
-        <h1 id="titleText">ನಮ್ಮ ನೂತನ ಮನೆ</h1>
-        <p id="subText">ಕನಸಿನ ಗೂಡಿನ ದೃಶ್ಯ ವೈಭವ</p>
+  <main class="main-wrapper">
+    <!-- Header -->
+    <header class="header">
+      <div class="date-badge">28 & 29 ನವೆಂಬರ್ 2026</div>
+      <h1>ನಮ್ಮ ನೂತನ ಮನೆ</h1>
+      <p class="subtitle">ಕನಸಿನ ಗೂಡಿನ ದೃಶ್ಯ ವೈಭವ</p>
+    </header>
+
+    <!-- 3D Gyroscope/Touch Interactive Card -->
+    <div class="portal-3d" id="portalContainer">
+      <div class="portal-card" id="card3D">
+        <img src="https://raw.githubusercontent.com/vicky8431550994-collab/Home-inauguration-/main/house.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'" alt="ನಮ್ಮ ಮನೆ ಮುಂಭಾಗ">
+        <div class="portal-badge">ರಾಮಯ್ಯ ಬಡಾವಣೆ, ಶಂಕರ ನಗರ, ತಿಪಟೂರು</div>
       </div>
-
-      <!-- Center 3D Focus -->
-      <div class="hero-house-card" id="heroHouse">
-        <img src="https://raw.githubusercontent.com/vicky8431550994-collab/Home-inauguration-/main/house.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80'" alt="ಮನೆಯ ಮುಂಭಾಗ">
-        <div class="badge">ರಾಮಯ್ಯ ಬಡಾವಣೆ, ಶಂಕರ ನಗರ, ತಿಪಟೂರು[span_4](start_span)[span_4](end_span)</div>
-      </div>
-
-      <!-- 3D Fan-out Cards -->
-      <div class="memories-fanout">
-        <div class="memory-card card-left-2">
-          <img src="https://raw.githubusercontent.com/vicky8431550994-collab/Home-inauguration-/main/house.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80'" alt="ಮುಂಭಾಗ">
-          <div class="card-info">
-            <h4>ಆರಂಭ</h4>
-            <p>ಕನಸು ನನಸಾದ ಕ್ಷಣ</p>
-          </div>
-        </div>
-
-        <div class="memory-card card-left-1">
-          <img src="https://raw.githubusercontent.com/vicky8431550994-collab/Home-inauguration-/main/house.jpg" onerror="this.src='https://images.unsplash.com/photo-1545232979-fbf68fe9b1af?auto=format&fit=crop&w=600&q=80'" alt="ಪೂಜೆ">
-          <div class="card-info">
-            <h4>ದೈವ ಕೃಪೆ</h4>
-            <p>ಪವಿತ್ರ ಪೂಜಾ ಆಶೀರ್ವಾದ</p>
-          </div>
-        </div>
-
-        <div class="memory-card card-right-1">
-          <img src="https://raw.githubusercontent.com/vicky8431550994-collab/Home-inauguration-/main/house.jpg" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80'" alt="ಹಾಲ್">
-          <div class="card-info">
-            <h4>ಸಂಭ್ರಮ</h4>
-            <p>ಕುಟುಂಬದ ನಲ್ಮೆಯ ನಗು</p>
-          </div>
-        </div>
-
-        <div class="memory-card card-right-2">
-          <img src="https://raw.githubusercontent.com/vicky8431550994-collab/Home-inauguration-/main/house.jpg" onerror="this.src='https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80'" alt="ನೆನಪು">
-          <div class="card-info">
-            <h4>ನವ ಅಧ್ಯಾಯ</h4>
-            <p>ಸುಖ, ಶಾಂತಿಯ ಹಾರೈಕೆ</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-hint">↓ ಸ್ಕ್ರಾಲ್ ಮಾಡಿ ಅನ್ವೇಷಿಸಿ</div>
     </div>
-  </div>
 
-  <!-- Invitation & Map Section -->
-  <section class="bottom-section">
-    <div class="invitation-card">
+    <!-- Invitation & Details Card -->
+    <section class="invite-box">
       <h2>ಆತ್ಮೀಯ ಆಹ್ವಾನ ಹಾಗೂ ಹಾರೈಕೆಗಳು</h2>
-      
-      <div class="event-dates">
-        📅 ದಿನಾಂಕ: 28 ಮತ್ತು 29 ನವೆಂಬರ್ 2026<br>
-        📍 ಸ್ಥಳ: ರಾಮಯ್ಯ ಬಡಾವಣೆ, ಶಂಕರ ನಗರ, ತಿಪಟೂರು[span_5](start_span)[span_5](end_span)
+
+      <div class="details-pill">
+        📅 <strong>ದಿನಾಂಕ:</strong> 28 ಮತ್ತು 29 ನವೆಂಬರ್ 2026<br>
+        📍 <strong>ಸ್ಥಳ:</strong> ರಾಮಯ್ಯ ಬಡಾವಣೆ, ಶಂಕರ ನಗರ, ತಿಪಟೂರು
       </div>
 
-      <p style="font-size: 1.05rem; color: #d1d5db;">
+      <p class="invite-text">
         ನಮ್ಮ ನೂತನ ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವಕ್ಕೆ ತಾವು ತಮ್ಮ ಕುಟುಂಬ ಸಮೇತರಾಗಿ ಆಗಮಿಸಿ, ನಮ್ಮ ಈ ಹೊಸ ಪಯಣಕ್ಕೆ ಶುಭ ಹಾರೈಸಿ ನಮ್ಮ ಸಂಭ್ರಮವನ್ನು ಇಮ್ಮಡಿಗೊಳಿಸಬೇಕಾಗಿ ಕೋರುತ್ತೇವೆ.
       </p>
 
-      <!-- Google Maps Button -->
       <a href="https://maps.app.goo.gl/tEP12fhTb6SrHrKw7?g_st=aw" target="_blank" class="map-btn">
-        <span>📍 ಗೂಗಲ್ ಮ್ಯಾಪ್‌ನಲ್ಲಿ ಸ್ಥಳ ನೋಡಿ</span>
+        📍 ಗೂಗಲ್ ಮ್ಯಾಪ್‌ನಲ್ಲಿ ಸ್ಥಳ ನೋಡಿ
       </a>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <script>
-    gsap.registerPlugin(ScrollTrigger);
+    // Pure 3D Tilt on Touch & Move (Butter-Smooth on all phones)
+    const portal = document.getElementById('portalContainer');
+    const card = document.getElementById('card3D');
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".scroll-track",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1.2
-      }
+    function handleMove(x, y, rect) {
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const rotateX = ((y - centerY) / (rect.height / 2)) * -14;
+      const rotateY = ((x - centerX) / (rect.width / 2)) * 14;
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+    }
+
+    portal.addEventListener('mousemove', (e) => {
+      handleMove(e.clientX, e.clientY, portal.getBoundingClientRect());
     });
 
-    // 1. Center card spins 360 & zooms in (ವೀಡಿಯೊ ಶೈಲಿ)[span_6](start_span)[span_6](end_span)
-    tl.to("#heroHouse", {
-      rotationY: 360,
-      rotationX: 10,
-      scale: 1.2,
-      ease: "power1.inOut"
-    })
+    portal.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    });
 
-    // 2. Title transitions
-    .to("#titleText", { opacity: 0, y: -20, duration: 0.3 }, "<0.5")
-    .call(() => {
-      document.getElementById("titleText").innerText = "ಅಮೂಲ್ಯ ನೆನಪುಗಳು";
-      document.getElementById("subText").innerText = "ಪ್ರತಿ ಮೂಲೆಯಲ್ಲೂ ನೆಲೆಸಿದೆ ನಲ್ಮೆಯ ಪ್ರೀತಿ";
-    })
-    .to("#titleText", { opacity: 1, y: 0, duration: 0.3 })
+    portal.addEventListener('touchmove', (e) => {
+      const touch = e.touches[0];
+      handleMove(touch.clientX, touch.clientY, portal.getBoundingClientRect());
+    }, { passive: true });
 
-    // 3. Center card shifts back
-    .to("#heroHouse", {
-      scale: 0.88,
-      z: -100,
-      rotationX: 0,
-      ease: "power2.out"
-    })
-
-    // 4. Cards fan out in 3D (Explosion Effect)[span_7](start_span)[span_7](end_span)
-    .to(".card-left-2", {
-      opacity: 1,
-      x: -380,
-      y: -25,
-      rotationY: 28,
-      rotationZ: -6,
-      scale: 0.95,
-      ease: "power2.out"
-    }, "-=0.2")
-    .to(".card-left-1", {
-      opacity: 1,
-      x: -190,
-      y: 20,
-      rotationY: 14,
-      rotationZ: -2,
-      scale: 0.92,
-      ease: "power2.out"
-    }, "<")
-    .to(".card-right-1", {
-      opacity: 1,
-      x: 190,
-      y: 20,
-      rotationY: -14,
-      rotationZ: 2,
-      scale: 0.92,
-      ease: "power2.out"
-    }, "<")
-    .to(".card-right-2", {
-      opacity: 1,
-      x: 380,
-      y: -25,
-      rotationY: -28,
-      rotationZ: 6,
-      scale: 0.95,
-      ease: "power2.out"
-    }, "<");
+    portal.addEventListener('touchend', () => {
+      card.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    });
   </script>
 </body>
-    </html>
-  
+</html>
