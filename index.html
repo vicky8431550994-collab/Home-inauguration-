@@ -1,530 +1,370 @@
 <!DOCTYPE html>
 <html lang="kn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ಅನು ಶಿವ ನಿಲಯ | ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವ | Home Inauguration</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Noto+Serif+Kannada:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Sans+Kannada:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- GSAP Libraries for 3D Scroll -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <style>
     :root {
-      --gold-primary: #d4af37;
-      --gold-light: #fef08a;
-      --card-glass: rgba(12, 12, 16, 0.85);
+      --bg: #09090b;
+      --card-bg: #131317;
+      --gold: #f59e0b;
+      --gold-glow: rgba(245, 158, 11, 0.45);
+      --text-dim: #a1a1aa;
+      --white: #ffffff;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      background-color: #060608;
-      color: #f4f4f5;
-      font-family: 'Noto Serif Kannada', serif;
-      min-height: 100vh;
-      position: relative;
+      background-color: var(--bg);
+      color: var(--white);
+      font-family: 'Noto Sans Kannada', 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
+      perspective: 1200px;
     }
 
-    /* HD House Background */
-    .hero-bg-image {
+    /* Ambient Lighting Effect */
+    .ambient-glow {
       position: fixed;
-      inset: 0;
-      background: url('house.jpg') center center / cover no-repeat;
-      z-index: 0;
-      filter: contrast(1.1) brightness(0.6) saturate(1.15);
-      transform: scale(1.02);
-    }
-
-    .hero-bg-overlay {
-      position: fixed;
-      inset: 0;
-      background: 
-        radial-gradient(circle at 85% 15%, rgba(190, 18, 60, 0.28), transparent 45%),
-        radial-gradient(circle at 15% 85%, rgba(5, 150, 105, 0.25), transparent 50%),
-        linear-gradient(180deg, rgba(6, 6, 8, 0.6) 0%, rgba(6, 6, 8, 0.88) 65%, #060608 100%);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .grid-mesh {
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-      background-size: 32px 32px;
-      opacity: 0.6;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* Header */
-    header {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 24px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(6, 6, 8, 0.55);
-    }
-
-    .brand-logo {
-      font-size: 19px;
-      font-weight: 700;
-      color: #ffd700;
-      letter-spacing: 1px;
-    }
-
-    .pill-status {
-      font-family: 'Plus Jakarta Sans', 'Noto Serif Kannada', sans-serif;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      padding: 6px 14px;
-      border-radius: 50px;
-      border: 1px solid rgba(212, 175, 55, 0.35);
-      background: rgba(212, 175, 55, 0.12);
-      color: var(--gold-light);
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    /* Main Container */
-    .container {
-      position: relative;
-      z-index: 2;
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 36px;
-      align-items: center;
-    }
-
-    .hero-text-col {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .mantra-badge {
-      display: inline-flex;
-      align-items: center;
-      font-size: 15.5px;
-      color: var(--gold-light);
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-    }
-
-    .hero-title {
-      font-size: clamp(30px, 4vw, 48px);
-      line-height: 1.5;
-      font-weight: 900;
-      color: #ffffff;
-      padding-top: 6px;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.95);
-    }
-
-    .hero-title .highlight-house {
-      display: block;
-      color: #ffd700;
-      font-size: 1.15em;
-      line-height: 1.45;
-      padding: 4px 0;
-      text-shadow: 0 0 25px rgba(255, 215, 0, 0.45);
-    }
-
-    .hero-desc {
-      font-size: 15px;
-      line-height: 1.8;
-      color: #e4e4e7;
-      max-width: 520px;
-    }
-
-    .spec-matrix {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 6px;
-    }
-
-    .matrix-item {
-      background: var(--card-glass);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 14px;
-      padding: 14px 16px;
-      position: relative;
-    }
-
-    .matrix-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3.5px;
-      height: 100%;
-      border-radius: 14px 0 0 14px;
-      background: linear-gradient(180deg, var(--gold-primary), transparent);
-    }
-
-    .matrix-title {
-      font-size: 11.5px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: #a1a1aa;
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
-
-    .matrix-value {
-      font-size: 14px;
-      color: #fafafa;
-      font-weight: 700;
-      line-height: 1.55;
-    }
-
-    /* Action Buttons */
-    .cta-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn-maps-pulse {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 26px;
-      border-radius: 50px;
-      background: linear-gradient(135deg, #ffe066 0%, #d4af37 50%, #996515 100%);
-      color: #120902;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 14.5px;
-      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.45);
-      transition: all 0.3s ease;
-    }
-
-    .btn-maps-pulse:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 36px rgba(212, 175, 55, 0.65);
-    }
-
-    .btn-call {
-      padding: 15px 24px;
-      border-radius: 50px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #fafafa;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    /* Right Showcase Card */
-    .hero-card-col {
-      position: relative;
-    }
-
-    .estate-card {
-      background: var(--card-glass);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 14px;
-      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.85);
-    }
-
-    .photo-wrap {
-      position: relative;
-      width: 100%;
-      height: 420px;
-      border-radius: 18px;
-      overflow: hidden;
-      background: #000;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .photo-wrap img#housePreviewImg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .photo-wrap video#mainHouseVideo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: none;
-      background: #000;
-    }
-
-    /* Animated Play Button */
-    .movie-play-btn {
-      position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 84px;
-      height: 84px;
-      background: rgba(18, 14, 10, 0.85);
-      backdrop-filter: blur(12px);
-      border-radius: 50%;
-      border: 2px solid #ffd700;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, var(--gold-glow) 0%, rgba(9,9,11,0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .scroll-track {
+      height: 380vh;
+      position: relative;
+    }
+
+    .showcase-stage {
+      height: 100vh;
+      width: 100vw;
+      position: sticky;
+      top: 0;
+      overflow: hidden;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 0 35px rgba(212, 175, 55, 0.6);
-      transition: all 0.25s ease;
+      transform-style: preserve-3d;
+    }
+
+    .header-text {
+      text-align: center;
+      position: absolute;
+      top: 9%;
       z-index: 10;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .movie-play-btn::before, .movie-play-btn::after {
-      content: '';
-      position: absolute;
-      inset: -12px;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 215, 0, 0.6);
-      animation: rippleEffect 2.2s infinite ease-out;
       pointer-events: none;
+      width: 90%;
     }
 
-    .movie-play-btn::after {
-      animation-delay: 1.1s;
-    }
-
-    @keyframes rippleEffect {
-      0% { transform: scale(0.85); opacity: 1; }
-      100% { transform: scale(1.6); opacity: 0; }
-    }
-
-    .play-triangle {
-      width: 0;
-      height: 0;
-      border-top: 13px solid transparent;
-      border-bottom: 13px solid transparent;
-      border-left: 22px solid #ffd700;
-      margin-left: 5px;
-    }
-
-    .movie-badge-label {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      padding: 7px 14px;
-      background: rgba(0, 0, 0, 0.72);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      border-radius: 50px;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      color: #ffd700;
-      text-transform: uppercase;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      z-index: 8;
-    }
-
-    .live-indicator {
-      width: 7px;
-      height: 7px;
-      background: #ef4444;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #ef4444;
-    }
-
-    .floating-card-tag {
-      position: absolute;
-      bottom: 14px;
-      left: 14px;
-      right: 14px;
-      padding: 12px 16px;
-      background: rgba(9, 9, 12, 0.92);
-      backdrop-filter: blur(18px);
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 8;
-    }
-
-    .tag-estate-name {
-      font-size: 15px;
-      font-weight: 700;
+    .header-text h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: 2px;
       color: #fff;
+      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9);
+      font-weight: 700;
     }
 
-    .tag-estate-loc {
-      font-size: 12px;
-      color: #a1a1aa;
+    .header-text p {
+      color: var(--gold);
+      font-size: clamp(0.95rem, 2vw, 1.25rem);
+      margin-top: 6px;
+      letter-spacing: 1px;
     }
 
-    .status-dot {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #10b981;
-      margin-right: 6px;
-      box-shadow: 0 0 10px #10b981;
+    /* 3D Floating House Hero Object */
+    .hero-house-card {
+      width: clamp(280px, 32vw, 360px);
+      height: clamp(380px, 45vh, 480px);
+      background: #18181b;
+      border: 2px solid rgba(245, 158, 11, 0.5);
+      border-radius: 24px;
+      overflow: hidden;
+      position: absolute;
+      z-index: 5;
+      transform-style: preserve-3d;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.9), 0 0 50px var(--gold-glow);
+      will-change: transform, opacity;
+      cursor: pointer;
     }
 
-    @media (max-width: 850px) {
-      .container {
-        grid-template-columns: 1fr;
-        padding: 20px 16px 40px;
-      }
-      .photo-wrap {
-        height: 330px;
-      }
-      .spec-matrix {
-        grid-template-columns: 1fr;
-      }
+    .hero-house-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-house-card .badge {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    /* Fan-out Memory Cards */
+    .memories-fanout {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 4;
+      transform-style: preserve-3d;
+    }
+
+    .memory-card {
+      position: absolute;
+      width: clamp(200px, 20vw, 240px);
+      height: clamp(280px, 32vh, 320px);
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+      transform-style: preserve-3d;
+      opacity: 0;
+      transform: scale(0.6);
+      will-change: transform, opacity;
+    }
+
+    .memory-card img {
+      width: 100%;
+      height: 68%;
+      object-fit: cover;
+    }
+
+    .card-info {
+      padding: 12px;
+      text-align: center;
+    }
+
+    .card-info h4 {
+      color: var(--gold);
+      font-size: 0.95rem;
+    }
+
+    .card-info p {
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      margin-top: 4px;
+    }
+
+    /* Scroll Prompt */
+    .scroll-hint {
+      position: absolute;
+      bottom: 30px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      animation: bounce 2s infinite ease-in-out;
+      z-index: 10;
+    }
+
+    @keyframes bounce {
+      0%, 100% { opacity: 0.4; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(8px); }
+    }
+
+    /* Bottom Wishes / Details */
+    .bottom-section {
+      min-height: 80vh;
+      background: #0f0f13;
+      padding: 80px 20px;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .bottom-section h2 {
+      color: var(--gold);
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .invitation-card {
+      max-width: 650px;
+      background: #16161b;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 18px;
+      padding: 35px 25px;
+      line-height: 1.8;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
   </style>
 </head>
 <body>
 
-  <div class="hero-bg-image"></div>
-  <div class="hero-bg-overlay"></div>
-  <div class="grid-mesh"></div>
+  <div class="ambient-glow"></div>
 
-  <header>
-    <div class="brand-logo">ಅನು ಶಿವ ನಿಲಯ</div>
-    <div class="pill-status">ಗೃಹಪ್ರವೇಶ ಮಹೋತ್ಸವ</div>
-  </header>
-
-  <main class="container">
-    
-    <div class="hero-text-col">
-      <div class="mantra-badge">
-        ✨ || ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ || ✨
+  <div class="scroll-track">
+    <div class="showcase-stage">
+      
+      <div class="header-text">
+        <h1 id="titleText">ನಮ್ಮ ನೂತನ ಮನೆ</h1>
+        <p id="subText">ಕನಸಿನ ಗೂಡಿನ ಸುಂದರ ನೆನಪುಗಳು</p>
       </div>
 
-      <h1 class="hero-title">
-        ಹೊಸ ಮನೆ, ಹೊಸ ಕನಸು
-        <span class="highlight-house">ಅನು ಶಿವ ನಿಲಯ</span>
-      </h1>
+      <!-- Main Center 3D Floating House -->
+      <div class="hero-house-card" id="heroHouse">
+        <img src="house.jpg" alt="ನಮ್ಮ ಮನೆ ಮುಂಭಾಗ">
+        <div class="badge">ರಾಮಯ್ಯ ಬಡಾವಣೆ, ಶಂಕರ ನಗರ</div>
+      </div>
 
-      <p class="hero-desc">
-        ನಮ್ಮ ನೂತನ ನಿವಾಸದ ಗೃಹಪ್ರವೇಶದ ಶುಭ ಸಂದರ್ಭಕ್ಕೆ ತಮಗೂ ಹಾಗೂ ತಮ್ಮ ಕುಟುಂಬದವರಿಗೂ ಆದರದ ಹಾರ್ದಿಕ ಸುಸ್ವಾಗತ. ತಮ್ಮ ಉಪಸ್ಥಿತಿಯೇ ನಮಗೆ ಆಶೀರ್ವಾದ.
+      <!-- Fan-Out Cards (ವೀಡಿಯೊದಲ್ಲಿ ಸ್ಪ್ಲಿಟ್ ಆಗುವಂತೆ) -->
+      <div class="memories-fanout">
+        <div class="memory-card card-left-2">
+          <img src="house.jpg" alt="ಮನೆ ನೋಟ 1">
+          <div class="card-info">
+            <h4>ಆರಂಭ</h4>
+            <p>ಕನಸು ನನಸಾದ ಕ್ಷಣ</p>
+          </div>
+        </div>
+
+        <div class="memory-card card-left-1">
+          <img src="house.jpg" alt="ಮನೆ ನೋಟ 2">
+          <div class="card-info">
+            <h4>ಪೂಜಾ ಸಂಭ್ರಮ</h4>
+            <p>ದೇವರ ಕೃಪೆ ಮತ್ತು ಆಶೀರ್ವಾದ</p>
+          </div>
+        </div>
+
+        <div class="memory-card card-right-1">
+          <img src="house.jpg" alt="ಮನೆ ನೋಟ 3">
+          <div class="card-info">
+            <h4>ಆತ್ಮೀಯರ ಸಮ್ಮುಖ</h4>
+            <p>ಕುಟುಂಬದ ನಗು ಮತ್ತು ಪ್ರೀತಿ</p>
+          </div>
+        </div>
+
+        <div class="memory-card card-right-2">
+          <img src="house.jpg" alt="ಮನೆ ನೋಟ 4">
+          <div class="card-info">
+            <h4>ಹೊಸ ಅಧ್ಯಾಯ</h4>
+            <p>ಸಂತಸದ ಜೀವನದ ಹಾರೈಕೆ</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint">↓ ಕೆಳಗೆ ಸ್ಕ್ರಾಲ್ ಮಾಡಿ</div>
+    </div>
+  </div>
+
+  <section class="bottom-section">
+    <h2>ಹಾರೈಕೆ ಮತ್ತು ಪ್ರೀತಿ</h2>
+    <div class="invitation-card">
+      <p style="font-size: 1.1rem; color: #ddd;">
+        ನಮ್ಮ ನೂತನ ಗೃಹಪ್ರವೇಶಕ್ಕೆ ಆಗಮಿಸಿ, ಶುಭ ಹಾರೈಸಿ ನಮ್ಮ ಸಂಭ್ರಮವನ್ನು ಇಮ್ಮಡಿಗೊಳಿಸಿದ ತಮಗೆಲ್ಲರಿಗೂ ಹೃತ್ಪೂರ್ವಕ ಧನ್ಯವಾದಗಳು.
       </p>
-
-      <div class="spec-matrix">
-        <div class="matrix-item">
-          <div class="matrix-title">ಶುಭ ದಿನಾಂಕ</div>
-          <div class="matrix-value">28 - 29 ನವೆಂಬರ್ 2026</div>
-        </div>
-
-        <div class="matrix-item">
-          <div class="matrix-title">ಶುಭ ಮುಹೂರ್ತ</div>
-          <div class="matrix-value">ಮಧ್ಯಾಹ್ನ 12:00 ಗಂಟೆಗೆ</div>
-        </div>
-
-        <div class="matrix-item">
-          <div class="matrix-title">ವಿಳಾಸ</div>
-          <div class="matrix-value">ರಾಮಯ್ಯ ಬಡಾವಣೆ, ಶಂಕರ ನಗರ, ತಿಪಟೂರು</div>
-        </div>
-
-        <div class="matrix-item">
-          <div class="matrix-title">ಸಂಪರ್ಕ ಸಂಖ್ಯೆಗಳು</div>
-          <div class="matrix-value">9964217340<br>9535090924<br>8431550994</div>
-        </div>
-      </div>
-
-      <div class="cta-row">
-        <!-- ನಿಖರವಾದ ಗೂಗಲ್ ಮ್ಯಾಪ್ ಲಿಂಕ್ -->
-        <a href="https://maps.app.goo.gl/tEP12fhTb6SrHrKw7" target="_blank" class="btn-maps-pulse">
-          <span>📍 ನಮ್ಮ ಮನೆಗೆ ದಾರಿ ➔ ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ</span>
-        </a>
-        <a href="tel:8431550994" class="btn-call">
-          📞 ಕರೆ ಮಾಡಿ
-        </a>
-      </div>
     </div>
-
-    <!-- Right Showcase Card -->
-    <div class="hero-card-col">
-      <div class="estate-card">
-        <div class="photo-wrap" id="playerContainer">
-          
-          <div class="movie-badge-label" id="tourBadge">
-            <span class="live-indicator"></span>
-            <span>HD TOUR</span>
-          </div>
-
-          <!-- ಪ್ಲೇ ಬಟನ್ ಒತ್ತಿದ ತಕ್ಷಣ ವಿಡಿಯೋ ಪ್ಲೇ ಆಗುತ್ತದೆ -->
-          <div class="movie-play-btn" id="playTriggerBtn" onclick="startDirectVideo()">
-            <div class="play-triangle"></div>
-          </div>
-
-          <!-- ಮುಂಭಾಗದ ಚಿತ್ರ -->
-          <img src="house.jpg" alt="ಅನು ಶಿವ ನಿಲಯ" id="housePreviewImg">
-
-          <!-- ವಿಡಿಯೋ ಪ್ಲೇಯರ್ -->
-          <video id="mainHouseVideo" controls playsinline preload="auto">
-            <source src="VID_20260918_231046_376.mp4" type="video/mp4">
-            <source src="tour.mp4" type="video/mp4">
-            ನಿಮ್ಮ ಬ್ರೌಸರ್ ವಿಡಿಯೋ ಬೆಂಬಲಿಸುವುದಿಲ್ಲ.
-          </video>
-
-          <div class="floating-card-tag" id="bottomTag">
-            <div>
-              <div class="tag-estate-name">ಅನು ಶಿವ ನಿಲಯ</div>
-              <div class="tag-estate-loc">ತಿಪಟೂರು, ಕರ್ನಾಟಕ</div>
-            </div>
-            <div>
-              <span class="status-dot"></span>
-              <span style="font-size: 12px; color: #10b981; font-weight: 600;">ಸುಸ್ವಾಗತ</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </main>
+  </section>
 
   <script>
-    function startDirectVideo() {
-      const img = document.getElementById('housePreviewImg');
-      const video = document.getElementById('mainHouseVideo');
-      const playBtn = document.getElementById('playTriggerBtn');
-      const bottomTag = document.getElementById('bottomTag');
-      const tourBadge = document.getElementById('tourBadge');
+    gsap.registerPlugin(ScrollTrigger);
 
-      img.style.display = 'none';
-      playBtn.style.display = 'none';
-      bottomTag.style.display = 'none';
-      tourBadge.style.display = 'none';
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".scroll-track",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1.2
+      }
+    });
 
-      video.style.display = 'block';
-      video.play().catch(function(err) {
-        video.muted = true;
-        video.play();
-      });
-    }
+    // 1. ನಿಮ್ಮ ಮನೆಯ ಫೋಟೋ 360 ಡಿಗ್ರಿ ತಿರುಗಿ ಜೂಮ್ ಆಗುವುದು (ವೀಡಿಯೊ ಫೇಸ್ 1)
+    tl.to("#heroHouse", {
+      rotationY: 360,
+      rotationX: 8,
+      scale: 1.18,
+      ease: "power1.inOut"
+    })
+
+    // 2. ಶೀರ್ಷಿಕೆ ಸ್ಮೂತ್ ಆಗಿ ಬದಲಾಗುವುದು
+    .to("#titleText", { opacity: 0, y: -20, duration: 0.3 }, "<")
+    .call(() => {
+      document.getElementById("titleText").innerText = "ಅಮೂಲ್ಯ ನೆನಪುಗಳು";
+      document.getElementById("subText").innerText = "ಪ್ರತಿ ಮೂಲೆಯಲ್ಲೂ ನೆಲೆಸಿದೆ ನಲ್ಮೆಯ ಪ್ರೀತಿ";
+    })
+    .to("#titleText", { opacity: 1, y: 0, duration: 0.3 })
+
+    // 3. ಮಧ್ಯದ ಕಾರ್ಡ್ ಸ್ವಲ್ಪ ಹಿಂದೆ ಸರಿಯುವುದು
+    .to("#heroHouse", {
+      scale: 0.9,
+      z: -80,
+      ease: "power2.out"
+    })
+
+    // 4. ಉಳಿದ ನೆನಪಿನ ಕಾರ್ಡ್‌ಗಳು ಅಕ್ಕಪಕ್ಕ ಹರಡಿಕೊಳ್ಳುವುದು (ವೀಡಿಯೊ ಫೇಸ್ 2 - Explosion Effect)
+    .to(".card-left-2", {
+      opacity: 1,
+      x: -360,
+      y: -20,
+      rotationY: 28,
+      rotationZ: -6,
+      scale: 0.95,
+      ease: "power2.out"
+    }, "-=0.2")
+    .to(".card-left-1", {
+      opacity: 1,
+      x: -180,
+      y: 15,
+      rotationY: 14,
+      rotationZ: -2,
+      scale: 0.92,
+      ease: "power2.out"
+    }, "<")
+    .to(".card-right-1", {
+      opacity: 1,
+      x: 180,
+      y: 15,
+      rotationY: -14,
+      rotationZ: 2,
+      scale: 0.92,
+      ease: "power2.out"
+    }, "<")
+    .to(".card-right-2", {
+      opacity: 1,
+      x: 360,
+      y: -20,
+      rotationY: -28,
+      rotationZ: 6,
+      scale: 0.95,
+      ease: "power2.out"
+    }, "<");
   </script>
-
 </body>
 </html>
-
